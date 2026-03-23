@@ -93,6 +93,9 @@ A beautiful, responsive web interface for the AI Skill Insight Engine API. Built
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `API_URL` | Backend API URL | `https://ai_skill_insight_engine.vercel.app` |
+| `NEXT_PUBLIC_API_KEY` | Optional API key for backend authentication | (empty) |
+
+**🔐 Security Note:** If the backend has `FRONTEND_API_KEY` enabled, you must set `NEXT_PUBLIC_API_KEY` in your Vercel environment variables with the same value. This ensures only your frontend can access the backend API.
 
 ## 🎨 Customization
 
