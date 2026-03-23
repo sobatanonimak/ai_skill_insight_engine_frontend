@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import { Sparkles, Zap, Shield, ArrowRight, Loader2, CheckCircle, AlertCircle, ExternalLink, Github } from 'lucide-react'
 
 const API_URL = process.env.API_URL || 'https://ai_skill_insight_engine.vercel.app'
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || ''
 
 interface AnalysisResult {
   success: boolean
@@ -33,8 +34,14 @@ export default function Home() {
     setResult(null)
 
     try {
+      const headers: Record<string, string> = {}
+      if (API_KEY) {
+        headers['X-API-Key'] = API_KEY
+      }
+      
       const response = await axios.get(`${API_URL}/analyze`, {
         params: { url, format },
+        headers,
         timeout: 60000,
       })
       
